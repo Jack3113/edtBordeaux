@@ -1,5 +1,5 @@
 import React from 'react';
-import { ActivityIndicator, AsyncStorage, NetInfo, ScrollView, Text, View } from 'react-native';
+import { ActivityIndicator, AsyncStorage, ScrollView, Text, View } from 'react-native';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import moment from 'moment';
@@ -74,7 +74,7 @@ class Week extends React.Component {
         let cacheDate = null;
 
         this.setState({ schedule: null, loading: true, cancelToken }, async () => {
-            const isConnected = (await NetInfo.getConnectionInfo()) !== 'none';
+            const isConnected = true; // fetch NetInfo state
 
             if (isConnected) {
                 try {

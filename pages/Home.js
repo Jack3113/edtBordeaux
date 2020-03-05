@@ -1,5 +1,5 @@
 import React from 'react';
-import { ActivityIndicator, AsyncStorage, NetInfo, SectionList, Text, TouchableOpacity, View } from 'react-native';
+import { ActivityIndicator, AsyncStorage, SectionList, Text, TouchableOpacity, View } from 'react-native';
 import axios from 'axios';
 import { Hideo } from 'react-native-textinput-effects';
 import { connect } from 'react-redux';
@@ -132,7 +132,7 @@ class Home extends React.Component {
     async fetchList() {
         let list = null;
 
-        const isConnected = (await NetInfo.getConnectionInfo()) !== 'none';
+        const isConnected = true; // fetch NetInfo state
         if (isConnected) {
             try {
                 const response = await axios.get('https://hackjack.info/et/json.php?clean=true');
