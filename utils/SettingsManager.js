@@ -129,6 +129,7 @@ class SettingsManager {
 	};
 
 	resetSettings = () => {
+		// AsyncStorage.multiRemove(['firstload', 'settings', 'groupList']);
 		this.setTheme('light');
 		this.setLanguage('fr');
 		this.setGroup(null);
@@ -161,11 +162,7 @@ class SettingsManager {
 				this._firstload = isFirstLoad;
 			}
 		} catch (error) {
-			const settingsError = new ErrorAlert(
-				Translator.get('ERROR_WITH_MESSAGE', "Settings couldn't be loaded"),
-				ErrorAlert.durations.SHORT,
-			);
-			settingsError.show();
+			console.warn('SETTINGS COULNT BE LOADED', error);
 		}
 
 		try {
@@ -185,11 +182,7 @@ class SettingsManager {
 				this.setLanguage(settings.language);
 			}
 		} catch (error) {
-			const settingsError = new ErrorAlert(
-				Translator.get('ERROR_WITH_MESSAGE', "Settings couldn't be loaded"),
-				ErrorAlert.durations.SHORT,
-			);
-			settingsError.show();
+			console.warn('SETTINGS COULNT BE LOADED', error);
 		}
 	};
 }
